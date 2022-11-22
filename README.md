@@ -1,5 +1,1 @@
-# Grupo 17 de Bases de Datos
-
-Integrantes:   
-- Martín Jara  
-- Martín Rosenfeld
+# Grupo 17 y 18 de Bases de Datos
