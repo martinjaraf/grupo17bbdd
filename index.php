@@ -42,11 +42,10 @@
                         </h1>
                         <br>
                         <h2 class="subtitle has-text-white" style="opacity: 1.2">
-                            Presiona comenzar y podrás acceder a realizar a distinas consultas
-                            sobre los artistas, conciertos y mucho más
+                            Presiona importar para importar (valga la redundancia) los usuarios
                         </h2>
                         <br>
-                        <a class="btn btn-secondary mb-2" href="consultas.php">Comenzar
+                        <a class="btn btn-secondary mb-2" href="consultas.php">Importar usuarios
                         </a>
                     </div>
 
