@@ -45,7 +45,10 @@
                             Presiona importar para importar (valga la redundancia) los usuarios
                         </h2>
                         <br>
-                        <a class="btn btn-secondary mb-2" href="consultas.php">Importar usuarios
+                        <a class="btn btn-secondary mb-2" href="consultas/importar_usuarios.php">Importar usuarios
+                        </a>
+                        <br>
+                        <br> <a class="btn btn-secondary mb-2" href="index_artistas.php">Index artistas test
                         </a>
                         <br>
                         <a class="btn btn-secondary mb-2" href="sesion2.php">Inicio de Sesión
