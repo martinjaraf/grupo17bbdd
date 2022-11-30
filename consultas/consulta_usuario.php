@@ -52,12 +52,7 @@
                         $contrasena_usuario = $_POST["contrasena_usuario"]; 
                         echo "Contrasena ingresada: $contrasena_usuario<p>"; 
 
-                        if ($nombre_usuario == 'hola') { 
-                          	echo "No puedes entrar"; 
-                        }else{ 
-  	                        echo "Bienvenido"; 
-                        } 
-                        ?> 
+                        ?>
 
                         <?php
 
@@ -69,20 +64,21 @@
                         	$resultado = $result -> fetchAll();
                           ?>
                         <?php
-                            encontrado = FALSE
+                            $encontrado = FALSE
                         	foreach ($resultado as $r) {
-                                if $r[0] == $nombre_usuario
+                                if ($r[0] == $nombre_usuario){
                           		echo "Nombre de usuario encontrado.";
                                     if $r[1] == $contrasena_usuario
                                     echo "Contrasena correcta, Bienvenid@"
                                     else 
                                     echo "Contrasena incorrecta, vuelve a intentarlo :("
-                                    break
-                            if not encontrado
+                                    break}
+                            if (not $encontrado){
                             echo "Nombre de usuario no encontrado"
-        
+                            }
                         	}
-                          ?> 
+                          ?>
 
-    </body> 
-</html>
+    </body>
+
+    </html>
