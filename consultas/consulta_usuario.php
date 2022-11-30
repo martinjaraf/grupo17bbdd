@@ -46,39 +46,55 @@
                         </h2>
                         <br>
 
-                        <? 
+                        <?php 
+                        session_start();
+
                         $nombre_usuario = $_POST["nombre_usuario"]; 
                         echo "Nombre ingresado: $nombre_usuario<p>"; 
                         $contrasena_usuario = $_POST["contrasena_usuario"]; 
                         echo "Contrasena ingresada: $contrasena_usuario<p>"; 
 
-                        ?>
-
-                        <?php
-
                         require("../config/conexion.php");
 
-                         	$query = "SELECT nombre_usuario, contrasena_usuario FROM usuarios;";
-                        	$result = $db -> prepare($query);
-                        	$result -> execute();
-                        	$resultado = $result -> fetchAll();
-                          ?>
-                        <?php
-                            $encontrado = FALSE
-                        	foreach ($resultado as $r) {
-                                if ($r[0] == $nombre_usuario){
-                          		echo "Nombre de usuario encontrado.";
-                                    if $r[1] == $contrasena_usuario
-                                    echo "Contrasena correcta, Bienvenid@"
-                                    else 
-                                    echo "Contrasena incorrecta, vuelve a intentarlo :("
-                                    break}
-                            if (not $encontrado){
-                            echo "Nombre de usuario no encontrado"
-                            }
-                        	}
-                          ?>
+                        $query = "SELECT usuarios.id, usuarios.nombre, usuarios.password FROM usuarios WHERE users.username=?;";
+                        $result = $db -> prepare($query);
+                        $result -> execute($nombre_usuario);
+                        $usuario = $result->fetch();
 
-    </body>
+                        if ($usuario && $contrasena_usuario == $usuario['contrasena']) {
+                            $_SESSION['uid'] = $uuario['id'];
+                            $_SESSION['nombre_usuario'] = $usario['nombre_usuario'];
+                            header('Location: ../index.php', true);
+                            exit();
+                        }
+                        elseif ($usuario) {
+                            header('Location: ../login.php?message=Clave+Incorrecta', true);
+                            exit();
+                        }
+                        else {
+                            header('Location: ../login.php?message=Username+Incorrecto', true);
+                            exit();
+                        }
+                        ?>
 
-    </html>
+                        foreach ($resultado as $r) {
+                            if $r[0] == $nombre_usuario
+                      		echo "Nombre de usuario encontrado.";
+                                if $r[1] == $contrasena_usuario
+                                echo "Contrasena correcta, Bienvenid@"
+                                else 
+                                echo "Contrasena incorrecta, vuelve a intentarlo :("
+                                break
+                        if not $encontrado
+                        echo "Nombre de usuario no encontrado"
+                        }
+
+                        if ($nombre_usuario == 'hola') { 
+                            echo "No puedes entrar"; 
+                        }else{ 
+                            echo "Bienvenido"; 
+                        } 
+                        ?> 
+
+    </body> 
+</html>
