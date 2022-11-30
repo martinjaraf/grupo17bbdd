@@ -25,84 +25,89 @@
     
     ?>
 
-<p class="title is-2", align="center"> Hola <?php echo $nombre;?> </p>
+    <p class="title is-2" , align="center"> Hola <?php echo $nombre;?> </p>
 
 
-<div class="column is-half is-offset-one-quarter">
-    <h3 class="title has-text-white">
-        Próximos Eventos
-    </h3>
+    <div class="column is-half is-offset-one-quarter">
+        <h3 class="title has-text-white">
+            Próximos Eventos
+        </h3>
 
-    <?php
+        <?php
     if (empty($aprobados)) {
         echo "<p>No hay eventos programados</p>";
     }
     else {?>
-            <table>
-        <tr>
-          <th>Nombre</th>
-          <th>Recinto</th>
-          <th>Inicio</th>
-          <th>Término</th>
-        </tr>
-    <?php
+        <table>
+            <tr>
+                <th>Nombre</th>
+                <th>Recinto</th>
+                <th>Inicio</th>
+                <th>Término</th>
+            </tr>
+            <?php
     	foreach ($aprovados as $aprovado) {
       		echo "<tr><td>$aprovado[0]</td><td>$aprovado[1]</td><td>$aprovado[2]</td><td>$aprovado[3]</td></tr>";
     	}
+    } 
     ?>
-    	    </table>
-</div>
+
+        </table>
+    </div>
 
 
-<div class="column is-half is-offset-one-quarter">
-    <h3 class="title has-text-white">
-        Eventos en Espera
-    </h3>
+    <div class="column is-half is-offset-one-quarter">
+        <h3 class="title has-text-white">
+            Eventos en Espera
+        </h3>
 
-    <?php
+        <?php
     if (empty($en_espera)) {
         echo "<p>No hay eventos en espera</p>";
     }
     else {?>
-            <table>
-        <tr>
-          <th>Nombre</th>
-          <th>Recinto</th>
-          <th>Inicio</th>
-          <th>Término</th>
-        </tr>
-    <?php
+        <table>
+            <tr>
+                <th>Nombre</th>
+                <th>Recinto</th>
+                <th>Inicio</th>
+                <th>Término</th>
+            </tr>
+            <?php
     	foreach ($en_espera as $esperado) {
       		echo "<tr><td>$esperado[0]</td><td>$esperado[1]</td><td>$esperado[2]</td><td>$esperado[3]</td></tr>";
     	}
+    }
     ?>
-    	    </table>
-</div>
+        </table>
+    </div>
 
 
-<div class="column is-half is-offset-one-quarter">
-    <h3 class="title has-text-white">
-        Eventos Rechazados
-    </h3>
+    <div class="column is-half is-offset-one-quarter">
+        <h3 class="title has-text-white">
+            Eventos Rechazados
+        </h3>
 
-    <?php
+        <?php
     if (empty($rechazados)) {
         echo "<p>No hay eventos rechazados</p>";
     }
-    else {?>
-            <table>
-        <tr>
-          <th>Nombre</th>
-          <th>Recinto</th>
-          <th>Inicio</th>
-          <th>Término</th>
-        </tr>
-    <?php
+    else {
+        ?>
+        <table>
+            <tr>
+                <th>Nombre</th>
+                <th>Recinto</th>
+                <th>Inicio</th>
+                <th>Término</th>
+            </tr>
+            <?php
     	foreach ($rechazados as $rechazado) {
       		echo "<tr><td>$rechazado[0]</td><td>$rechazado[1]</td><td>$rechazado[2]</td><td>$rechazado[3]</td></tr>";
         }
-    ?>
-    	    </table>
     }
-</div>
+    ?>
+        </table>
+
+    </div>
 </body>
