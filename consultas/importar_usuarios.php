@@ -8,7 +8,7 @@
     }
 
 
-    $query = "CREATE TABLE usuarios (id_usuario int, nombre varchar(100), contrasena varchar(100), tipo varchar(30), PRIMARY KEY (id_usuario));";
+    $query = "CREATE TABLE usuarios (id_usuario int, nombre varchar(100), contrasena varchar(100), tipo varchar(30), id_antiguo int, PRIMARY KEY (id_usuario));";
     $result = $db -> prepare($query);
     $result -> execute();
     
@@ -27,7 +27,7 @@
         $password = generateRandomString();
         $name = $p[1];
         $name = strtolower(str_replace(" ", "_", $name));
-        $query = "INSERT INTO usuarios VALUES ($id, '$name', '$password', 'productora');";
+        $query = "INSERT INTO usuarios VALUES ($id, '$name', '$password', 'productora', $p[0]);";
         $result = $db -> prepare($query);
         $result -> execute();
         $id += 1;
@@ -37,7 +37,7 @@
         $password = generateRandomString();
         $name = $a[1];
         $name = strtolower(str_replace(" ", "_", $name));
-        $query = "INSERT INTO usuarios VALUES ($id, '$name', '$password', 'artista');";
+        $query = "INSERT INTO usuarios VALUES ($id, '$a[1]', '$password', 'artista', $a[0]);";
         $result = $db -> prepare($query);
         $result -> execute();
         $id += 1;
