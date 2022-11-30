@@ -47,6 +47,9 @@
                         <br>
                         <a class="btn btn-secondary mb-2" href="consultas/importar_usuarios.php">Importar usuarios
                         </a>
+                        <br>
+                        <br> <a class="btn btn-secondary mb-2" href="index_artistas.php">Index artistas test
+                        </a>
                     </div>
 
                     <script async type="text/javascript" src="../js/bulma.js"></script>
