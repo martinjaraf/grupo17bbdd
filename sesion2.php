@@ -40,20 +40,22 @@
                         <h1 class="title has-text-white" style="opacity: 0.8">
                             DCConciertos
                         </h1>
+
+                        <form action="consultas/consulta_usuario.php" method="post"> 
+                        Nombre: <input type="text" name="nombre_usuario">
+                        <br/>
+                        Contrasena: <input type="text" name="contrasena_usuario">
+                        <br/>
+                        <input type="submit" value="Entrar"> 
+                        <br/><br/>
+                        </form> 
+
                         <br>
-                        <h2 class="subtitle has-text-white" style="opacity: 1.2">
-                            Presiona importar para importar (valga la redundancia) los usuarios
-                        </h2>
-                        <br>
-                        <a class="btn btn-secondary mb-2" href="consultas/importar_usuarios.php">Importar usuarios
-                        </a>
-                        <br>
-                        <br> <a class="btn btn-secondary mb-2" href="index_artistas.php">Index artistas test
-                        </a>
-                        <br>
-                        <a class="btn btn-secondary mb-2" href="sesion2.php">Inicio de Sesión
+                        <a class="btn btn-secondary mb-2" href="sesion.php">Iniciar Sesión
                         </a>
                     </div>
 
                     <script async type="text/javascript" src="../js/bulma.js"></script>
-    </body>
+
+</body>
+</html>
