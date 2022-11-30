@@ -25,7 +25,9 @@
     $id = 0;
     foreach ($productoras as $p) {
         $password = generateRandomString();
-        $query = "INSERT INTO usuarios VALUES ($id, '$p[1]', '$password', 'productora');";
+        $name = $p[1];
+        $name = strtolower(str_replace(" ", "_", $name));
+        $query = "INSERT INTO usuarios VALUES ($id, '$name', '$password', 'productora');";
         $result = $db -> prepare($query);
         $result -> execute();
         $id += 1;
@@ -33,6 +35,8 @@
 
     foreach ($artistas as $a) {
         $password = generateRandomString();
+        $name = $a[1];
+        $name = strtolower(str_replace(" ", "_", $name));
         $query = "INSERT INTO usuarios VALUES ($id, '$a[1]', '$password', 'artista');";
         $result = $db -> prepare($query);
         $result -> execute();
