@@ -23,12 +23,53 @@
 .navbar {
     overflow: hidden;
     background-color: #333;
-    position: fixed;
+    position: absolute;
     top: 0;
     width: 100%;
+    z-index: 10000000;
 }
 </style>
 
+<body>
+    <nav class="navbar navbar-fixed-top is-white">
+        <div class="container">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="../index.php">
+                    <img src="logo.jpg" width="150" height="120" class="d-inline-block align-top">
+                </a>
+                <span class="navbar-burger burger" data-target="navbarMenu">
+                    <span>
+                    </span>
+                    <span>
+                    </span>
+                    <span>
+                    </span>
+                </span>
+            </div>
+
+            <div id="navbarMenu" class="navbar-menu">
+                <div class="navbar-end">
+
+                    <?php
+                    if (isset($_SESSION)) { ?>
+                    <a class="navbar-item" href="/~grupo17/cerrar_sesion.php">Cerrar sesión</a>
+                    <a class="navbar-item">
+                        <?php echo $_SESSION["nombre"]; ?>
+                    </a>
+
+
+                    <?php } else { ?>
+                    <a class="navbar-item" href="index.php">Inicio</a>
+                    <a class="navbar-item" href="/~grupo17/inicio_sesion.php">Iniciar sesión</a>
+                    <?php } ?>
+                </div>
+            </div>
+        </div>
+    </nav>
+</body>
+
+</html>
+<!-- 
 <body>
     <nav class="navbar navbar-fixed-top is-white">
         <div class="container">
@@ -43,4 +84,4 @@
             </div>
         </div>
         </div>
-    </nav>
+    </nav> -->

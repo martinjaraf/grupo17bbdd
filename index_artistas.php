@@ -10,7 +10,7 @@
         background-size: cover;
         background-repeat: no-repeat;
         background-attachment: fixed;
-
+        z-index: 1;
     }
 
     .transparent {
