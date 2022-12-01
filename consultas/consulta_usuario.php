@@ -70,12 +70,4 @@
                         header('Location: ../sesion2.php', true);
                         exit();
                         }
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </body>
-
-    </html>
+                        ?>

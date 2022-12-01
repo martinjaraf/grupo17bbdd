@@ -40,7 +40,7 @@
 require("../config/conexion.php");
 
 
- 	$query = "SELECT id_artista, nombre_artista, contacto FROM artistas;";
+ 	$query = "ELECT id_artista, nombre_artista, contacto FROM artistas;";
 	$result = $db -> prepare($query);
 	$result -> execute();
 	$resultado = $result -> fetchAll();

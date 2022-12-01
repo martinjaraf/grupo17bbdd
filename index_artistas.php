@@ -1,28 +1,28 @@
 <html-->
-    <?php include('templates/header.php');   ?>
+    <?php include('templates/header.php'); ?>
 
     <style>
-    body {
-        background-image: url('https://www.todofondos.net/wp-content/uploads/3840x2400-Fondo-de-Pantalla-Oscuro-Fondo-Linea-Superficie.-COSAS-768x480.jpg');
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
+        body {
+            background-image: url('https://www.todofondos.net/wp-content/uploads/3840x2400-Fondo-de-Pantalla-Oscuro-Fondo-Linea-Superficie.-COSAS-768x480.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
 
-    }
+        }
 
-    .transparent {
-        opacity: 0.9;
-        background-color: black;
-        width: 100%;
-        height: 100%;
-    }
+        .transparent {
+            opacity: 0.9;
+            background-color: black;
+            width: 100%;
+            height: 100%;
+        }
 
-    .container.has-text-centered {
-        margin: auto;
-        top: 42px;
-        text-align: center;
-        width: 100%;
-    }
+        .container.has-text-centered {
+            margin: auto;
+            top: 42px;
+            text-align: center;
+            width: 100%;
+        }
     </style>
 
     <body>
@@ -47,14 +47,20 @@
 
         <?php
 
-require("config/conexion.php");
+        require("config/conexion.php");
 
+        session_start();
 
-$query = "SELECT eventos.evento, eventos.fecha_inicio, eventos.recinto FROM eventos WHERE eventos.artista = 'Paulo Londra';";
-	$result = $db -> prepare($query);
-	$result -> execute();
-	$pokemones = $result -> fetchAll();
-  ?>
+        $query = "SELECT * FROM artistas WHERE id = ?;";
+        $result = $db->prepare($query);
+        $result->execute($_SESSION['nomb']);
+        $pokemones = $result->fetchAll();
+
+        $query = "SELECT eventos.evento, eventos.fecha_inicio, eventos.recinto FROM eventos WHERE eventos.artista = ?;";
+        $result = $db->prepare($query);
+        $result->execute($_SESSION['nomb']);
+        $pokemones = $result->fetchAll();
+        ?>
         <div class="container2" align="center">
             <table class="table">
                 <thead class="thead-dark">
@@ -66,11 +72,11 @@ $query = "SELECT eventos.evento, eventos.fecha_inicio, eventos.recinto FROM even
                 </thead>
                 <tbody>
                     <?php
-	foreach ($pokemones as $pokemon) {
-  		echo "<tr> <td>$pokemon[0]</td> <td>$pokemon[1]</td> <td>$pokemon[2]</td></t
+                    foreach ($pokemones as $pokemon) {
+                        echo "<tr> <td>$pokemon[0]</td> <td>$pokemon[1]</td> <td>$pokemon[2]</td></t
         r>";
-	}
-  ?>
+                    }
+                    ?>
                 </tbody>
             </table>
         </div>
