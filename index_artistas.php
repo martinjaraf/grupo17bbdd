@@ -28,7 +28,7 @@
     }
     </style>
     <?php
-    if ($_SESSION['uid']) { ?>
+    if ($_SESSION['id']) { ?>
 
 
     <body>
@@ -54,9 +54,6 @@
         <?php
 
         require("config/conexion.php");
-
-        $a = $_SESSION['id'];
-        echo "<p>id sesion: $a</p>";
 
         $query = "SELECT nombre_artista FROM artistas WHERE id_artista = ?;";
         $result = $db->prepare($query);
@@ -93,22 +90,22 @@
     <?php
     } else { ?>
 
-    <main>
-        <section class="hero is-info">
-            <div class="hero-body">
-                <div class="container">
-                    <h1 class="title">
-                        No iniciaste sesión
-                    </h1>
-                    <h2 class="subtitle">
-                    </h2>
-                </div>
+    }
+
+    <body>
+        <div class="hero-body">
+
+            <div class="container has-text-centered">
+                <br>
+                <h1 class="title has-text-white" style="opacity: 0.8">
+                    No iniciaste sesión
+                </h1>
             </div>
-        </section>
-    </main>
+        </div>
+    </body>
 
     <?php } ?>
 
-    </body>
+
 
     </html>
