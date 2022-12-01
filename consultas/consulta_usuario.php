@@ -1,5 +1,5 @@
 <html-->
-    <?php include('../templates/header.php');   ?>
+    <?php include('../templates/header.php'); ?>
 
     <style>
     .hero-body {
@@ -38,43 +38,44 @@
                     <div class="column is-6 is-offset-3">
                         <br>
 
-                        <?php 
+                        <?php
                         session_start();
 
-                        $nombre_usuario = $_POST["nombre_usuario"]; 
-                        echo "<p>Nombre ingresado: $nombre_usuario</p>"; 
-                        $contrasena_usuario = $_POST["contrasena_usuario"]; 
-                        echo "<p>Contrasena ingresada: $contrasena_usuario</p>"; 
+                        $nombre_usuario = $_POST["nombre_usuario"];
+                        echo "<p>Nombre ingresado: $nombre_usuario</p>";
+                        $contrasena_usuario = $_POST["contrasena_usuario"];
+                        echo "<p>Contrasena ingresada: $contrasena_usuario</p>";
 
                         require("../config/conexion.php");
 
-                        $query = "SELECT * FROM usuarios WHERE contrasena = $contrasena_usuario;";
-                        $result = $db -> prepare($query);
-                        $result -> execute();
+                        $query = "SELECT * FROM usuarios WHERE contrasena = '$contrasena_usuario';";
+                        $result = $db->prepare($query);
+                        $result->execute();
                         $usuario = $result->fetch();
+                        
 
                         if ($usuario[1] == $nombre_usuario) {
-                            $_SESSION['uid'] = $usuario[0];
-                            $_SESSION['nombre_usuario'] = $usuario[1];
-                            if ($usuario[3] == "productora") {
-                                $_SESSION['productora'] = $usuario[3];
-                                header('Location: ../productoras.php', true);
-                            } else {
-                                $_SESSION['artista'] = $usuario[3];
-                                header('Location: ../index_artistas.php', true);
-                            }
-                            exit();
+                        $_SESSION['uid'] = $usuario[0];
+                        $_SESSION['nombre_usuario'] = $usuario[1];
+                        if ($usuario[3] == "productora") {
+                        $_SESSION['productora'] = $usuario[3];
+                        header('Location: ../productoras.php', true);
+                        } else {
+                        $_SESSION['artista'] = $usuario[3];
+                        header('Location: ../index_artistas.php', true);
+                        }
+                        exit();
                         }
                         else {
-                            header('Location: ../sesion2.php', true);
-                            exit();
+                        header('Location: ../sesion2.php', true);
+                        exit();
                         }
-                        ?>
+
                     </div>
                 </div>
             </div>
         </div>
 
-</body>
+    </body>
 
-</html>
+    </html>
