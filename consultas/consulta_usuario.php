@@ -50,51 +50,52 @@
                         session_start();
 
                         $nombre_usuario = $_POST["nombre_usuario"]; 
-                        echo "Nombre ingresado: $nombre_usuario<p>"; 
+                        echo "<p>Nombre ingresado: $nombre_usuario</p>"; 
                         $contrasena_usuario = $_POST["contrasena_usuario"]; 
-                        echo "Contrasena ingresada: $contrasena_usuario<p>"; 
+                        echo "<p>Contrasena ingresada: $contrasena_usuario</p>"; 
 
                         require("../config/conexion.php");
 
-                        $query = "SELECT usuarios.id, usuarios.nombre, usuarios.password FROM usuarios WHERE users.username=?;";
+                        $query = "SELECT * FROM usuarios WHERE nombre=$nombre_usuario;";
                         $result = $db -> prepare($query);
-                        $result -> execute($nombre_usuario);
-                        $usuario = $result->fetch();
+                        $result -> execute();
+                        $usuario = $result->fetchAll();
 
-                        if ($usuario && $contrasena_usuario == $usuario['contrasena']) {
-                            $_SESSION['uid'] = $uuario['id'];
-                            $_SESSION['nombre_usuario'] = $usario['nombre_usuario'];
-                            header('Location: ../index.php', true);
+                        if ($usuario && $contrasena_usuario == $usuario[2]) {
+                            $_SESSION['uid'] = $usuario[0];
+                            $_SESSION['nombre_usuario'] = $usuario[1];
+                            header('Location: index_artistas.php', true);
                             exit();
                         }
                         elseif ($usuario) {
-                            header('Location: ../login.php?message=Clave+Incorrecta', true);
+                            header('Location: consulta_usuario.php?message=Clave+Incorrecta', true);
                             exit();
                         }
                         else {
-                            header('Location: ../login.php?message=Username+Incorrecto', true);
+                            header('Location: ../index_artistas.php', true);
                             exit();
                         }
                         ?>
 
                         foreach ($resultado as $r) {
-                            if $r[0] == $nombre_usuario
-                      		echo "Nombre de usuario encontrado.";
-                                if $r[1] == $contrasena_usuario
-                                echo "Contrasena correcta, Bienvenid@"
-                                else 
-                                echo "Contrasena incorrecta, vuelve a intentarlo :("
-                                break
+                        if $r[0] == $nombre_usuario
+                        echo "Nombre de usuario encontrado.";
+                        if $r[1] == $contrasena_usuario
+                        echo "Contrasena correcta, Bienvenid@"
+                        else
+                        echo "Contrasena incorrecta, vuelve a intentarlo :("
+                        break
                         if not $encontrado
                         echo "Nombre de usuario no encontrado"
                         }
 
-                        if ($nombre_usuario == 'hola') { 
-                            echo "No puedes entrar"; 
-                        }else{ 
-                            echo "Bienvenido"; 
-                        } 
-                        ?> 
+                        if ($nombre_usuario == 'hola') {
+                        echo "No puedes entrar";
+                        }else{
+                        echo "Bienvenido";
+                        }
+                        ?>
 
-    </body> 
-</html>
+    </body>
+
+    </html>
