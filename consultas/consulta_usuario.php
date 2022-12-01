@@ -37,22 +37,14 @@
                 <div class="container has-text-centered">
                     <div class="column is-6 is-offset-3">
                         <br>
-                        <h1 class="title has-text-white" style="opacity: 0.8">
-                            DCConciertos
-                        </h1>
-                        <br>
-                        <h2 class="subtitle has-text-white" style="opacity: 1.2">
-                            Presiona importar para importar (valga la redundancia) los usuarios
-                        </h2>
-                        <br>
 
                         <?php 
                         session_start();
 
                         $nombre_usuario = $_POST["nombre_usuario"]; 
-                        echo "Nombre ingresado: $nombre_usuario<p>"; 
+                        echo "<p>Nombre ingresado: $nombre_usuario</p>"; 
                         $contrasena_usuario = $_POST["contrasena_usuario"]; 
-                        echo "Contrasena ingresada: $contrasena_usuario<p>"; 
+                        echo "<p>Contrasena ingresada: $contrasena_usuario</p>"; 
 
                         require("../config/conexion.php");
 
