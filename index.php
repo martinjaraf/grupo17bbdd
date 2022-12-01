@@ -51,7 +51,7 @@
                         <h2 class="subtitle has-text-white" style="opacity: 1.2">
                             ¿Desea iniciar sesión?
                         </h2>
-                        <a class="btn btn-secondary mb-2" href="sesion2.php">Inicio de Sesión
+                        <a class="btn btn-secondary mb-2" href="inicio_sesion.php">Inicio de Sesión
                         </a>
                     </div>
 

@@ -59,14 +59,14 @@
                             $_SESSION['nombre'] = $usuario[1];
                             if ($usuario[3] == "productora") {
                                 $_SESSION['productora'] = $usuario[3];
-                                header('Location: ../productoras.php', true);
+                                header('Location: ../index_productoras.php', true);
                             } else {
                                 $_SESSION['artista'] = $usuario[3];
                                 header('Location: ../index_artistas.php', true);
                             }
                             exit();
                         } else {
-                            header('Location: ../sesion2.php', true);
+                            header('Location: ../inicio_sesion.php?error=true', true);
                             exit();
                         }
                         ?>
