@@ -37,7 +37,7 @@
         $password = generateRandomString();
         $name = $a[1];
         $name = strtolower(str_replace(" ", "_", $name));
-        $query = "INSERT INTO usuarios VALUES ($id, '$a[1]', '$password', 'artista', $a[0]);";
+        $query = "INSERT INTO usuarios VALUES ($id, '$name', '$password', 'artista', $a[0]);";
         $result = $db -> prepare($query);
         $result -> execute();
         $id += 1;
