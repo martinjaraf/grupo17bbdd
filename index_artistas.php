@@ -1,29 +1,35 @@
 <html-->
-    <?php include('templates/header.php'); ?>
+    <?php
+    session_start();
+    include('templates/header.php'); ?>
+
 
     <style>
-        body {
-            background-image: url('https://www.todofondos.net/wp-content/uploads/3840x2400-Fondo-de-Pantalla-Oscuro-Fondo-Linea-Superficie.-COSAS-768x480.jpg');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
+    body {
+        background-image: url('https://www.todofondos.net/wp-content/uploads/3840x2400-Fondo-de-Pantalla-Oscuro-Fondo-Linea-Superficie.-COSAS-768x480.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
 
-        }
+    }
 
-        .transparent {
-            opacity: 0.9;
-            background-color: black;
-            width: 100%;
-            height: 100%;
-        }
+    .transparent {
+        opacity: 0.9;
+        background-color: black;
+        width: 100%;
+        height: 100%;
+    }
 
-        .container.has-text-centered {
-            margin: auto;
-            top: 42px;
-            text-align: center;
-            width: 100%;
-        }
+    .container.has-text-centered {
+        margin: auto;
+        top: 42px;
+        text-align: center;
+        width: 100%;
+    }
     </style>
+    <?php
+    if ($_SESSION['uid']) { ?>
+
 
     <body>
 
@@ -49,16 +55,18 @@
 
         require("config/conexion.php");
 
-        session_start();
+        $a = $_SESSION['id'];
+        echo "<p>id sesion: $a</p>";
 
-        $query = "SELECT * FROM artistas WHERE id = ?;";
+        $query = "SELECT nombre_artista FROM artistas WHERE id_artista = ?;";
         $result = $db->prepare($query);
-        $result->execute($_SESSION['nomb']);
-        $pokemones = $result->fetchAll();
+        $result-> execute([$_SESSION['id']]);
+        $nombre_artista = $result->fetch();
+        
 
         $query = "SELECT eventos.evento, eventos.fecha_inicio, eventos.recinto FROM eventos WHERE eventos.artista = ?;";
         $result = $db->prepare($query);
-        $result->execute($_SESSION['nomb']);
+        $result->execute([$nombre_artista[0]]);
         $pokemones = $result->fetchAll();
         ?>
         <div class="container2" align="center">
@@ -72,13 +80,35 @@
                 </thead>
                 <tbody>
                     <?php
-                    foreach ($pokemones as $pokemon) {
-                        echo "<tr> <td>$pokemon[0]</td> <td>$pokemon[1]</td> <td>$pokemon[2]</td></t
+        foreach ($pokemones as $pokemon) {
+            echo "<tr> <td>$pokemon[0]</td> <td>$pokemon[1]</td> <td>$pokemon[2]</td></t
         r>";
-                    }
+        }
                     ?>
                 </tbody>
             </table>
         </div>
 
     </body>
+    <?php
+    } else { ?>
+
+    <main>
+        <section class="hero is-info">
+            <div class="hero-body">
+                <div class="container">
+                    <h1 class="title">
+                        No iniciaste sesión
+                    </h1>
+                    <h2 class="subtitle">
+                    </h2>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <?php } ?>
+
+    </body>
+
+    </html>

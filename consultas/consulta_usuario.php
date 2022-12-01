@@ -52,22 +52,21 @@
                         $result = $db->prepare($query);
                         $result->execute();
                         $usuario = $result->fetch();
-                        
+
 
                         if ($usuario[1] == $nombre_usuario) {
-                        $_SESSION['uid'] = $usuario[0];
-                        $_SESSION['nombre_usuario'] = $usuario[1];
-                        if ($usuario[3] == "productora") {
-                        $_SESSION['productora'] = $usuario[3];
-                        header('Location: ../productoras.php', true);
+                            $_SESSION['id'] = $usuario[4];
+                            $_SESSION['nombre'] = $usuario[1];
+                            if ($usuario[3] == "productora") {
+                                $_SESSION['productora'] = $usuario[3];
+                                header('Location: ../productoras.php', true);
+                            } else {
+                                $_SESSION['artista'] = $usuario[3];
+                                header('Location: ../index_artistas.php', true);
+                            }
+                            exit();
                         } else {
-                        $_SESSION['artista'] = $usuario[3];
-                        header('Location: ../index_artistas.php', true);
-                        }
-                        exit();
-                        }
-                        else {
-                        header('Location: ../sesion2.php', true);
-                        exit();
+                            header('Location: ../sesion2.php', true);
+                            exit();
                         }
                         ?>

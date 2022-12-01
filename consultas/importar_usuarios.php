@@ -43,33 +43,33 @@ foreach ($artistas as $a) {
     $result->execute();
     $id += 1;
 }
-header('Location: index.php', true);
+header('Location: ../index.php', true);
 ?>
 <style>
-    .hero-body {
-        opacity: 1;
-    }
+.hero-body {
+    opacity: 1;
+}
 
-    body {
-        background-image: url('https://c0.wallpaperflare.com/preview/600/388/1006/group-of-people-enjoying-concerts.jpg');
-        background-size: cover;
-        background-attachment: fixed;
-        background-repeat: no-repeat;
-    }
+body {
+    background-image: url('https://c0.wallpaperflare.com/preview/600/388/1006/group-of-people-enjoying-concerts.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
 
-    .transparent {
-        opacity: 0.6;
-        background-color: black;
-        width: 100%;
-        height: 50%;
-    }
+.transparent {
+    opacity: 0.6;
+    background-color: black;
+    width: 100%;
+    height: 50%;
+}
 
-    .container.has-text-centered {
-        margin: auto;
-        top: 42px;
-        width: 100%;
-        text-align: center;
-    }
+.container.has-text-centered {
+    margin: auto;
+    top: 42px;
+    width: 100%;
+    text-align: center;
+}
 </style>
 
 <body>
