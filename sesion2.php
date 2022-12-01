@@ -44,10 +44,10 @@
                     <form align="center" action="consultas/consulta_usuario.php" method="post"
                         class="subtitle has-text-white" style="opacity: 1.2">
                         <input type="text" class="form-control text-center" placeholder="Usuario"
-                            name="nombre_usuario">
+                            name="nombre_usuario" required>
                         <br>
                         <input type="text" name="contrasena_usuario" class="form-control text-center"
-                            placeholder="Contraseña">
+                            placeholder="Contraseña" required>
                         <br>
                         <input type="submit" value="Iniciar sesion" class="btn btn-secondary mb-6">
                     </form>

@@ -43,7 +43,7 @@ foreach ($artistas as $a) {
     $result->execute();
     $id += 1;
 }
-
+header('Location: index.php', true);
 ?>
 <style>
     .hero-body {

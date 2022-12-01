@@ -1,5 +1,5 @@
 <html-->
-    <?php include('templates/header.php');   ?>
+    <?php include('../templates/header.php');   ?>
 
     <style>
     .hero-body {
@@ -48,46 +48,33 @@
 
                         require("../config/conexion.php");
 
-                        $query = "SELECT * FROM usuarios WHERE nombre=$nombre_usuario;";
+                        $query = "SELECT * FROM usuarios WHERE contrasena = $contrasena_usuario;";
                         $result = $db -> prepare($query);
                         $result -> execute();
-                        $usuario = $result->fetchAll();
+                        $usuario = $result->fetch();
 
-                        if ($usuario && $contrasena_usuario == $usuario[2]) {
+                        if ($usuario[1] == $nombre_usuario) {
                             $_SESSION['uid'] = $usuario[0];
                             $_SESSION['nombre_usuario'] = $usuario[1];
-                            header('Location: index_artistas.php', true);
-                            exit();
-                        }
-                        elseif ($usuario) {
-                            header('Location: consulta_usuario.php?message=Clave+Incorrecta', true);
+                            if ($usuario[3] == "productora") {
+                                $_SESSION['productora'] = $usuario[3];
+                                header('Location: ../productoras.php', true);
+                            } else {
+                                $_SESSION['artista'] = $usuario[3];
+                                header('Location: ../index_artistas.php', true);
+                            }
                             exit();
                         }
                         else {
-                            header('Location: ../index_artistas.php', true);
+                            header('Location: ../sesion2.php', true);
                             exit();
                         }
                         ?>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-                        foreach ($resultado as $r) {
-                        if $r[0] == $nombre_usuario
-                        echo "Nombre de usuario encontrado.";
-                        if $r[1] == $contrasena_usuario
-                        echo "Contrasena correcta, Bienvenid@"
-                        else
-                        echo "Contrasena incorrecta, vuelve a intentarlo :("
-                        break
-                        if not $encontrado
-                        echo "Nombre de usuario no encontrado"
-                        }
+</body>
 
-                        if ($nombre_usuario == 'hola') {
-                        echo "No puedes entrar";
-                        }else{
-                        echo "Bienvenido";
-                        }
-                        ?>
-
-    </body>
-
-    </html>
+</html>
