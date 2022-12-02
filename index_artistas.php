@@ -27,11 +27,13 @@
         width: 100%;
     }
     </style>
-    <?php
+
+    <body>
+        <?php
     if ($_SESSION['id']) { ?>
 
 
-    <body>
+
 
         <br>
         <br>
@@ -61,7 +63,7 @@
         $nombre_artista = $result->fetch();
         
 
-        $query = "SELECT eventos.evento, eventos.fecha_inicio, eventos.recinto FROM eventos WHERE eventos.artista = ?;";
+        $query = "SELECT eventos.evento, eventos.fecha_inicio, eventos.recinto FROM eventos WHERE eventos.artista = ? AND eventos.fecha_inicio >= NOW();";
         $result = $db->prepare($query);
         $result->execute([$nombre_artista[0]]);
         $pokemones = $result->fetchAll();
@@ -86,13 +88,13 @@
             </table>
         </div>
 
-    </body>
-    <?php
+
+        <?php
     } else { ?>
 
-    }
+        }
 
-    <body>
+
         <div class="hero-body">
 
             <div class="container has-text-centered">
@@ -102,8 +104,8 @@
                 </h1>
             </div>
         </div>
+
+
+        <?php } ?>
+
     </body>
-
-    <?php } ?>
-
-    </html>

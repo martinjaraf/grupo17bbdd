@@ -59,10 +59,10 @@
                             $_SESSION['id'] = $usuario[4];
                             $_SESSION['nombre'] = $usuario[1];
                             if ($usuario[3] == "productora") {
-                                $_SESSION['productora'] = $usuario[3];
+                                $_SESSION['tipo'] = $usuario[3];
                                 header('Location: ../index_productoras.php', true);
                             } else {
-                                $_SESSION['artista'] = $usuario[3];
+                                $_SESSION['tipo'] = $usuario[3];
                                 header('Location: ../index_artistas.php', true);
                             }
                             exit();
