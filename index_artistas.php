@@ -2,7 +2,7 @@
     <?php
     session_start();
     include('templates/header.php'); ?>
-
+    
 
     <style>
     body {
@@ -80,11 +80,11 @@
         $nombre_artista = $result->fetch();
         
 
-        $query = "SELECT eventos.evento, eventos.fecha_inicio, eventos.recinto FROM eventos WHERE eventos.artista = ? AND eventos.fecha_inicio >= NOW();";
+        $query = "SELECT eventos.evento, eventos.fecha_inicio, eventos.recinto, entradas.asiento  FROM eventos, entradas WHERE eventos.artista = 'Paloma Mami' AND eventos.artista = entradas.artista AND eventos.fecha_inicio >= NOW() AND eventos.estado = 1; ";
         $result = $db->prepare($query);
         $result->execute([$nombre_artista[0]]);
-        $pokemones = $result->fetchAll();
-        ?>
+        $eventos = $result->fetchAll();
+        ?> 
         <div class="container2" align="center">
             <table class="table">
                 <thead class="thead-dark">
@@ -96,11 +96,11 @@
                 </thead>
                 <tbody>
                     <?php
-        foreach ($pokemones as $pokemon) {
-            echo "<tr> <td>$pokemon[0]</td> <td>$pokemon[1]</td> <td>$pokemon[2]</td></t
+        foreach ($eventos as $evento) {
+            echo "<tr> <td>$evento[0]</td> <td>$evento[1]</td> <td>$evento[2]</td></t
         r>";
         }
-                    ?>
+
                 </tbody>
             </table>
         </div>
