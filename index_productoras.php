@@ -6,8 +6,8 @@
     <?php
 
     require("config/conexion.php");
-    $query = "SELECT nombre_artista FROM artistas WHERE id_artista = ?;";
-    $result = $db->prepare($query);
+    $query = "SELECT nombre FROM productora WHERE pid = ?;";
+    $result = $db_2 ->prepare($query);
     $result->execute([$_SESSION['id']]);
     $nombre_artista = $result->fetch();
     $nombre = $nombre_artista[0];
@@ -115,4 +115,9 @@
         </table>
 
     </div>
+    
+    <div>
+        <a href="form_evento.php" class="btn btn-secondary mb-6">Crear Evento</a>
+    </div>
+
 </body>

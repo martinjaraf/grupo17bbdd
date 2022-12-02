@@ -31,10 +31,6 @@
     <body>
         <?php
     if ($_SESSION['id']) { ?>
-
-
-
-
         <br>
         <br>
         <br>
