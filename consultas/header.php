@@ -29,7 +29,9 @@
     z-index: 10000000;
 }
 </style>
-
+<?php
+session_start();
+?>
 <body>
     <nav class="navbar navbar-fixed-top is-white">
         <div class="container">

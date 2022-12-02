@@ -40,12 +40,9 @@
                         <br>
 
                         <?php
-                        session_start();
 
                         $nombre_usuario = $_POST["nombre_usuario"];
-                        echo "<p>Nombre ingresado: $nombre_usuario</p>";
                         $contrasena_usuario = $_POST["contrasena_usuario"];
-                        echo "<p>Contrasena ingresada: $contrasena_usuario</p>";
 
                         require("../config/conexion.php");
 
@@ -54,11 +51,13 @@
                         $result->execute();
                         $usuario = $result->fetch();
 
+                        echo "<p> $usuario[1] </p>";
+
 
                         if ($usuario[1] == $nombre_usuario) {
                             $_SESSION['id'] = $usuario[4];
                             $_SESSION['nombre'] = $usuario[1];
-                            if ($usuario[3] == "productora") {
+                            if ($usuario[3] == 'productora') {
                                 $_SESSION['tipo'] = $usuario[3];
                                 header('Location: ../index_productoras.php', true);
                             } else {

@@ -1,5 +1,5 @@
 <html-->
-    <?php include('templates/header.php'); ?>
+    <?php include('templates/header2.php'); ?>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
 
     <style>

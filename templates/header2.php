@@ -30,9 +30,7 @@
     z-index: 100000000;
 }
 </style>
-<?php
-session_start();
-?>
+
 <body>
     <nav class="navbar navbar-fixed-top is-white">
         <div class="container">
@@ -48,31 +46,6 @@ session_start();
                     <span>
                     </span>
                 </span>
-            </div>
-
-            <div id="navbarMenu" class="navbar-menu">
-                <div class="navbar-end">
-                    <?php if (isset($_SESSION)) {
-                    if ($_SESSION['tipo'] =='artista') { ?>
-                    <a class="navbar-item" href="/~grupo17/index_artistas.php">Menú artista</a>
-                    <?php } ?>
-                    <?php
-                    if ($_SESSION['tipo'] =='productora') { ?>
-                    <a class="navbar-item" href="/~grupo17/index_productoras.php">Menú productora</a>
-                    <?php } ?>
-
-                    <a class="navbar-item" href="/~grupo17/cerrar_sesion.php">Cerrar sesión</a>
-                    <a class="navbar-item">
-                        <?php echo $_SESSION["nombre"]; ?>
-                    </a>
-
-
-
-                    <?php } else { ?>
-                    <a class="navbar-item" href="index.php">Inicio</a>
-                    <a class="navbar-item" href="/~grupo17/inicio_sesion.php">Iniciar sesión</a>
-                    <?php } ?>
-                </div>
             </div>
         </div>
     </nav>

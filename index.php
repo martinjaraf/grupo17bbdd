@@ -1,6 +1,6 @@
 <html-->
 
-    <?php include('templates/header.php'); ?>
+    <?php include('templates/header2.php'); ?>
 
     <style>
     .hero-body {
