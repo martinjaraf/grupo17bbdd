@@ -1,5 +1,6 @@
 <html-->
-    <?php include('header.php'); ?>
+    <?php session_start();
+    include('header.php'); ?>
 
     <style>
     body {
@@ -37,14 +38,16 @@
 
         <?php
 
-        require("../config/conexion.php");
+require("../config/conexion.php");
+
+
         $query = "SELECT nombre_artista FROM artistas WHERE id_artista = ?;";
         $result = $db->prepare($query);
         $result->execute([$_SESSION['id']]);
         $nombre_artista = $result->fetch();
 
 
-        $query = "SELECT * FROM artistas;";
+        $query = "SELECT * FROM hospedajes WHERE nombre_artista = ?;";
         $result = $db->prepare($query);
         $result->execute([$nombre_artista[0]]);
         $resultado = $result->fetchAll();
@@ -53,15 +56,18 @@
             <table class="table">
                 <thead class="thead-dark">
                     <tr>
-                        <th>ID</th>
+                        <th>Id Traslado</th>
                         <th>Artista</th>
-                        <th>Número de teléfono</th>
+                        <th>Fecha Inicio</th>
+                        <th>Fecha Termino</th>
+                        <th>Hotel</th>
+                        <th>Lugar</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
                     foreach ($resultado as $r) {
-                        echo "<tr> <td>$r[0]</td> <td>$r[1]</td> <td>$r[2]</td></t
+                        echo "<tr> <td>$r[0]</td> <td>$r[1]</td> <td>$r[2]</td><td>$r[3]</td> <td>$r[4]</td> <td>$r[5]</td></t
         r>";
                     }
                     ?>

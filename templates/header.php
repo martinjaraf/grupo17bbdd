@@ -50,13 +50,20 @@
 
             <div id="navbarMenu" class="navbar-menu">
                 <div class="navbar-end">
-
+                    <?php if (isset($_SESSION)) {
+                    if ($_SESSION['tipo'] =='artista') { ?>
+                    <a class="navbar-item" href="/~grupo17/index_artistas.php">Menú artista</a>
+                    <?php } ?>
                     <?php
-                    if (isset($_SESSION)) { ?>
+                    if ($_SESSION['tipo'] =='productora') { ?>
+                    <a class="navbar-item" href="/~grupo17/index_productoras.php">Menú productora</a>
+                    <?php } ?>
+
                     <a class="navbar-item" href="/~grupo17/cerrar_sesion.php">Cerrar sesión</a>
                     <a class="navbar-item">
                         <?php echo $_SESSION["nombre"]; ?>
                     </a>
+
 
 
                     <?php } else { ?>

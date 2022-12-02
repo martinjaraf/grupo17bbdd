@@ -41,13 +41,34 @@
         <br>
         <h2 align="center" class="title has-text-white" style="opacity: 0.8">¡Bienvenido!</h2>
         <br>
+        <h3 align="center" class="subtitle has-text-white" style="opacity: 1.2"> Ver historial de traslados y hospedajes
+        </h3>
+        <div class="form-row">
+            <div class="col">
+                <form align="right" action="consultas/traslados.php" method="post">
+                    <input type="submit" value="Traslados" class="btn btn-secondary mb-2">
+                </form>
+            </div>
+
+            <div class="col">
+                <form align="left" action="consultas/hospedajes.php" method="post">
+                    <input type="submit" value="Hospedajes" class="btn btn-secondary mb-2">
+                </form>
+            </div>
+        </div>
+
+
+
+        <br>
+        <br>
         <h3 align="center" class="subtitle has-text-white" style="opacity: 1.2"> Propuestas de eventos
+
         </h3>
         <form align="center" action="consultas/consulta_1.php" method="post">
             <input type="submit" value="Aceptar" class="btn btn-secondary mb-2">
             <input type="submit" value="Rechazar" class="btn btn-secondary mb-2">
         </form>
-        <br>
+
         <br>
         <br>
         <h3 align="center" class="subtitle has-text-white" style="opacity: 1.2">Eventos programados
