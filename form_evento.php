@@ -1,6 +1,6 @@
 <?php
-    session_start();
-    include('templates/header.php'); 
+session_start();
+include('templates/header.php');
 ?>
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
@@ -36,6 +36,18 @@
     }
 </style>
 
+<?php
+include("config/conexion.php");
+$query = "SELECT * FROM recintos;";
+$result = $db->prepare($query);
+$result->execute();
+$recintos = $result->fetchAll();
+
+$query = "SELECT * FROM artistas;";
+$result = $db->prepare($query);
+$result->execute();
+$artistas = $result->fetchAll();
+?>
 
 <body>
     <br>
@@ -46,8 +58,40 @@
             <div class="container has-text-centered">
                 <div class="column is-6 is-offset-3">
                     <br>
-                    <form align="center" action=".php" method="post"
-                        class="subtitle has-text-white" style="opacity: 1.2">
+                    <form align="center" action="create_evento.php" method="post" class="subtitle has-text-white"
+                        style="opacity: 1.2">
+                        <input type="text" class="form-control text-center" placeholder="Nombre del evento"
+                            name="nombre_evento" required>
+                        <br>
+                        <div class="form-row">
+                            <div class="col">
+                                <input type="date" class="form-control text-center" placeholder="Fecha de Inicio"
+                                    name="fecha_inicio" required>
+                            </div>
+                            <div class="col">
+                                <input type="date" class="form-control text-center" placeholder="Fecha de Termino"
+                                    name="fecha_termino" required>
+                            </div>
+                        </div>
+                        <br>
+                        <select name="recinto" id="recinto" class="form-control text-center">
+                            <option value="" disabled selected hidden>Selecciona el Recinto</option>
+                            <?php
+                            foreach ($recintos as $r) {
+                                echo "<option value='$r[1]'>$r[1]</option>";
+                            }
+                            ?>
+                        </select>
+                        <br>
+                        <label> Artistas a Invitar</label>
+                        <br>
+                        <div class="custom-control custom-checkbox">
+                            <?php
+                            foreach ($artistas as $a) {
+                                echo "<label><input type='checkbox' value='$a[1]'> $a[1]</label><br>";
+                            }
+                            ?>
+                        </div>
                         
                     </form>
                 </div>
