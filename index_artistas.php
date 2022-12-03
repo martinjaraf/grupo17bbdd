@@ -2,7 +2,7 @@
     <?php
     session_start();
     include('templates/header.php'); ?>
-    
+
 
     <style>
     body {
@@ -30,7 +30,7 @@
 
     <body>
         <?php
-    if ($_SESSION['id']) { ?>
+        if ($_SESSION['id']) { ?>
         <br>
         <br>
         <br>
@@ -72,19 +72,20 @@
 
         <?php
 
-        require("config/conexion.php");
+            require("config/conexion.php");
 
-        $query = "SELECT nombre_artista FROM artistas WHERE id_artista = ?;";
-        $result = $db->prepare($query);
-        $result-> execute([$_SESSION['id']]);
-        $nombre_artista = $result->fetch();
-        
+            $query = "SELECT nombre_artista FROM artistas WHERE id_artista = ?;";
+            $result = $db->prepare($query);
+            $result->execute([$_SESSION['id']]);
+            $nombre_artista = $result->fetch();
+            $nombre = $nombre_artista[0];
 
-        $query = "SELECT eventos.evento, eventos.fecha_inicio, eventos.recinto, entradas.asiento  FROM eventos, entradas WHERE eventos.artista = 'Paloma Mami' AND eventos.artista = entradas.artista AND eventos.fecha_inicio >= NOW() AND eventos.estado = 1; ";
-        $result = $db->prepare($query);
-        $result->execute([$nombre_artista[0]]);
-        $eventos = $result->fetchAll();
-        ?> 
+
+            $query = "SELECT eventos.evento, eventos.fecha_inicio, eventos.recinto, entradas.asiento  FROM eventos, entradas WHERE eventos.artista = '$nombre' AND eventos.artista = entradas.artista AND eventos.fecha_inicio >= NOW() AND eventos.estado = 1; ";
+            $result = $db->prepare($query);
+            $result->execute([$nombre_artista[0]]);
+            $eventos = $result->fetchAll();
+        ?>
         <div class="container2" align="center">
             <table class="table">
                 <thead class="thead-dark">
@@ -96,10 +97,11 @@
                 </thead>
                 <tbody>
                     <?php
-        foreach ($eventos as $evento) {
-            echo "<tr> <td>$evento[0]</td> <td>$evento[1]</td> <td>$evento[2]</td></t
+            foreach ($eventos as $evento) {
+                echo "<tr> <td>$evento[0]</td> <td>$evento[1]</td> <td>$evento[2]</td></t
         r>";
-        }
+            }
+                    ?>
 
                 </tbody>
             </table>
@@ -107,7 +109,7 @@
 
 
         <?php
-    } else { ?>
+        } else { ?>
 
         }
 

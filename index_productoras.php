@@ -58,19 +58,19 @@
         ?>
         <br>
         <br>
-        <p class="title is-2" , align="center"> Hola
+        <p class="title is-2 has-text-white" , align="center"> Hola
             <?php echo $nombre; ?>
         </p>
 
 
         <div class="column is-half is-offset-one-quarter">
-            <h3 class="title">
+            <h3 class="title has-text-white">
                 Próximos Eventos
             </h3>
 
             <?php
             if (empty($aprobados)) {
-                echo "<p>No hay eventos programados</p>";
+                echo "<p class='mb-0 has-text-white'>No hay eventos programados</p>";
             } else { ?>
             <table>
                 <tr>
@@ -88,15 +88,15 @@
             </table>
         </div>
 
-
+        <br>
         <div class="column is-half is-offset-one-quarter">
-            <h3 class="title">
+            <h3 class="title has-text-white">
                 Eventos en Espera
             </h3>
 
             <?php
             if (empty($en_espera)) {
-                echo "<p>No hay eventos en espera</p>";
+                echo "<p class='mb-0 has-text-white'>No hay eventos en espera</p>";
             } else { ?>
             <table>
                 <tr>
@@ -113,15 +113,15 @@
             </table>
         </div>
 
-
+        <br>
         <div class="column is-half is-offset-one-quarter">
-            <h3 class="title">
+            <h3 class="title has-text-white">
                 Eventos Rechazados
             </h3>
 
             <?php
             if (empty($rechazados)) {
-                echo "<p>No hay eventos rechazados</p>";
+                echo "<p class='mb-0 has-text-white'>No hay eventos rechazados</p>";
             } else {
             ?>
             <table>
@@ -139,9 +139,9 @@
             </table>
 
         </div>
-        
-        <div>
-            <a href="form_evento.php" class="btn btn-secondary mb-6" align="center">Crear Evento</a>
+        <br>
+        <div align="center">
+            <a href="form_evento.php" class="btn btn-secondary mb-6">Crear Evento</a>
         </div>
 
     </body>

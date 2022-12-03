@@ -68,5 +68,4 @@
                         } else {
                             header('Location: ../inicio_sesion.php?error=true', true);
                             exit();
-                        }
-                        ?>
+                        }?>
