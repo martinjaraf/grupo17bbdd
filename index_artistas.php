@@ -100,7 +100,7 @@
             echo "<tr> <td>$evento[0]</td> <td>$evento[1]</td> <td>$evento[2]</td></t
         r>";
         }
-
+                    ?>
                 </tbody>
             </table>
         </div>
