@@ -57,14 +57,49 @@
 
         <br>
         <br>
+        <?php
+            require("config/conexion.php");
+
+            $query = "SELECT nombre_artista FROM artistas WHERE id_artista = ?;";
+            $result = $db->prepare($query);
+            $result->execute([$_SESSION['id']]);
+            $nombre_artista = $result->fetch();
+            $nombre = $nombre_artista[0];
+
+
+            $query = "SELECT evento FROM eventos WHERE estado = 0 AND artista = '$nombre';";
+            $result = $db->prepare($query);
+            $result->execute();
+            $evento = $result->fetchAll();
+        ?>
+
+
         <h3 align="center" class="subtitle has-text-white" style="opacity: 1.2"> Propuestas de eventos
-
         </h3>
-        <form align="center" action="consultas/consulta_1.php" method="post">
-            <input type="submit" value="Aceptar" class="btn btn-secondary mb-2">
-            <input type="submit" value="Rechazar" class="btn btn-secondary mb-2">
-        </form>
+        <div class="column is-half is-offset-one-quarter" align="center">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Evento</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+            foreach ($evento as $e) {
+                echo "<tr> <td>$e[0]</td> <td><form align='center' action='consultas/aceptado.php' method='post'>
+                <label><input type='submit' class='btn btn-secondary mb-2' name='aceptado'  value='$e[0]'> Aceptar</label>
+            </form></td> 
+            <td><form align='center' action='consultas/rechazado.php' method='post'>
+            <label><input type='submit' class='btn btn-secondary mb-2' name='rechazado' placeholder='hola' value='$e[0]'> Rechazar</label>
+        </form></td>
+            </tr>";
 
+            }?>
+                </tbody>
+            </table>
+        </div>
         <br>
         <br>
         <h3 align="center" class="subtitle has-text-white" style="opacity: 1.2">Eventos programados
@@ -81,12 +116,15 @@
             $nombre = $nombre_artista[0];
 
 
-            $query = "SELECT eventos.evento, eventos.fecha_inicio, eventos.recinto, entradas.asiento  FROM eventos, entradas WHERE eventos.artista = '$nombre' AND eventos.artista = entradas.artista AND eventos.fecha_inicio >= NOW() AND eventos.estado = 1; ";
+
+            $query = "SELECT eventos.evento, eventos.fecha_inicio, eventos.recinto  FROM eventos WHERE eventos.artista = '$nombre' AND eventos.fecha_inicio >= NOW() AND eventos.estado = 1; ";
             $result = $db->prepare($query);
-            $result->execute([$nombre_artista[0]]);
+            $result->execute();
             $eventos = $result->fetchAll();
+
+
         ?>
-        <div class="container2" align="center">
+        <div class="column is-half is-offset-one-quarter" align="center">
             <table class="table">
                 <thead class="thead-dark">
                     <tr>
@@ -98,11 +136,7 @@
                 <tbody>
                     <?php
             foreach ($eventos as $evento) {
-                echo "<tr> <td>$evento[0]</td> <td>$evento[1]</td> <td>$evento[2]</td></t
-        r>";
-
-        }
-                    ?>
+                echo "<tr> <td>$evento[0]</td> <td>$evento[1]</td> <td>$evento[2]</td></tr>";
 
             }
                     ?>
@@ -114,7 +148,7 @@
 
 
         <?php
-    } else { ?>
+        } else { ?>
 
         }
 

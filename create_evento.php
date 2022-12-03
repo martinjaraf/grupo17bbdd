@@ -39,7 +39,7 @@
     $result2 = $db->prepare($query2);
     $result2->execute();
     $id_eventos_A = $result2->fetch();
-    $id_eventos = $id_eventos_A[0];
+    $id_eventos = $id_eventos_A[0]+1;
    
     
 
@@ -47,19 +47,13 @@
     $fecha_inicio = $_POST['fecha_inicio'];
     $recinto = $_POST['recinto'];
     $artistas = $_POST['artistas'];
-    echo "<br>";
-    echo "<p class='has-text-white'>Fecha: $id_eventos</p>";
-    echo "<p class='has-text-white'>Fecha: $fecha_inicio</p>";
-    echo "<p class='has-text-white'>Fecha: $nombre_evento</p>";
-    echo "<p class='has-text-white'>Fecha: $recinto</p>";
-    echo "<p class='has-text-white'>Fecha: $artistas[0]</p>";
-    echo "<p class='has-text-white'>Fecha: $nombre</p>";
  
     foreach ($artistas as $a) {
         $insertion = "INSERT INTO eventos (id_eventos, evento, productora, artista, fecha_inicio, recinto, estado) VALUES (?,?,?,?,?,?,?);";
         $insert = $db->prepare($insertion);
-        $insert->execute([300, '$nombre_evento', '$nombre', '$a', '$fecha_inicio', 'Producciones Baltimore', 0]);
-        /* $insert->execute([300, 'aa', 'adda', 'Duki', '2022-12-18', 'Producciones Baltimore', 0]);  */
+        $insert->execute([$id_eventos, $nombre_evento, $nombre, $a, $fecha_inicio,$recinto, 0]); 
+        /* $insert->execute([301, $nombre_evento, $nombre, 'Duki', '2022-12-18', 'Producciones Baltimore', 0]); */
+        $id_eventos = $id_eventos +1;
         
     }
     ?>
@@ -82,5 +76,4 @@
                 <a href="index_productoras.php" class="btn btn-secondary mb-6" align="center">Volver</a>
             </div>
         </div>
-
     </body>

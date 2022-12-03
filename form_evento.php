@@ -6,34 +6,34 @@ include('templates/header.php');
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
 
 <style>
-    .hero-body {
-        opacity: 1;
-    }
+.hero-body {
+    opacity: 1;
+}
 
-    body {
-        background-image: url('https://c0.wallpaperflare.com/preview/600/388/1006/group-of-people-enjoying-concerts.jpg');
-        background-size: cover;
-        background-attachment: fixed;
-        background-repeat: no-repeat;
-    }
+body {
+    background-image: url('https://c0.wallpaperflare.com/preview/600/388/1006/group-of-people-enjoying-concerts.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
 
-    .transparent {
-        opacity: 0.6;
-        background-color: black;
-        width: 100%;
-        height: 60%;
-    }
+.transparent {
+    opacity: 0.6;
+    background-color: black;
+    width: 100%;
+    height: 60%;
+}
 
-    .container.has-text-centered {
-        margin: auto;
-        top: 42px;
-        width: 100%;
-        text-align: center;
-    }
+.container.has-text-centered {
+    margin: auto;
+    top: 42px;
+    width: 100%;
+    text-align: center;
+}
 
-    .form-row {
-        align-items: center;
-    }
+.form-row {
+    align-items: center;
+}
 </style>
 
 <?php
@@ -92,7 +92,7 @@ $artistas = $result->fetchAll();
                             }
                             ?>
                         </div>
-                        <p align="center"><input type="submit" value="Crear /"></p>
+                        <p align="center"><input type="submit" value="Crear" class="btn btn-secondary mb-6"></p>
                     </form>
                 </div>
             </div>

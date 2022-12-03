@@ -38,34 +38,26 @@
         <?php
 
         require("../config/conexion.php");
+
         $query = "SELECT nombre_artista FROM artistas WHERE id_artista = ?;";
         $result = $db->prepare($query);
         $result->execute([$_SESSION['id']]);
         $nombre_artista = $result->fetch();
+        $nombre = $nombre_artista[0];
+        
+        $evento = $_POST['rechazado'];
 
-
-        $query = "SELECT * FROM artistas;";
+        $query = "UPDATE eventos SET estado = 2 WHERE artista = '$nombre' AND evento = '$evento';";
         $result = $db->prepare($query);
-        $result->execute([$nombre_artista[0]]);
-        $resultado = $result->fetchAll();
+        $result->execute();
+
+        
         ?>
-        <div class="container2" align="center">
-            <table class="table">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>ID</th>
-                        <th>Artista</th>
-                        <th>Número de teléfono</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    foreach ($resultado as $r) {
-                        echo "<tr> <td>$r[0]</td> <td>$r[1]</td> <td>$r[2]</td></t
-        r>";
-                    }
-                    ?>
-                </tbody>
-            </table>
+        <br>
+        <div align="center">
+            <p class='has-text-white'>Se rechazó con éxito</p>
+            <br>
+            <a href="../index_artistas.php" class="btn btn-secondary mb-6">Volver</a>
         </div>
+
     </body>

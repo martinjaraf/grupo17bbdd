@@ -38,10 +38,9 @@
         $nombre_productora = $result->fetch();
         $nombre = $nombre_productora[0];
 
-        $consulta1 = "SELECT evento, recinto, fecha_inicio FROM eventos WHERE productora = '$nombre' GROUP BY evento HAVING COUNT(DISTINCT artista) = COUNT(CASE WHEN estado = 1 THEN 1 END);"; //ORDER BY fecha_inicio DESC?
-        $consulta2 = "SELECT evento, recinto, fecha_inicio FROM eventos WHERE productora = '$nombre' GROUP BY evento HAVING COUNT(CASE WHEN estado = 2 THEN 1 END) = 0 AND COUNT(CASE WHEN estado = 0 THEN 1 END) > 0;";
-        $consulta3 = "SELECT evento, recinto, fecha_inicio FROM eventos WHERE productora = '$nombre' GROUP BY evento HAVING COUNT(CASE WHEN estado = 2 THEN 1 END) > 0;";
-
+        $consulta1 = "SELECT evento, recinto, fecha_inicio FROM eventos WHERE productora = '$nombre' GROUP BY (evento, recinto, fecha_inicio) HAVING COUNT(DISTINCT artista) = COUNT(CASE WHEN estado = 1 THEN 1 END);"; //ORDER BY fecha_inicio DESC?
+        $consulta2 = "SELECT evento, recinto, fecha_inicio FROM eventos WHERE productora = '$nombre' GROUP BY (evento, recinto, fecha_inicio) HAVING COUNT(CASE WHEN estado = 2 THEN 1 END) = 0 AND COUNT(CASE WHEN estado = 0 THEN 1 END) > 0;";
+        $consulta3 = "SELECT evento, recinto, fecha_inicio FROM eventos WHERE productora = '$nombre' GROUP BY (evento, recinto, fecha_inicio) HAVING COUNT(CASE WHEN estado = 2 THEN 1 END) > 0;";
 
         $result1 = $db->prepare($consulta1);
         $result1->execute();
@@ -72,14 +71,14 @@
             if (empty($aprobados)) {
                 echo "<p class='mb-0 has-text-white'>No hay eventos programados</p>";
             } else { ?>
-            <table>
+            <table class='has-text-white'>
                 <tr>
-                    <th>Nombre</th>
-                    <th>Recinto</th>
-                    <th>Inicio</th>
+                    <th class='has-text-white'>Nombre</th>
+                    <th class='has-text-white'>Recinto</th>
+                    <th class='has-text-white'>Inicio</th>
                 </tr>
                 <?php
-                foreach ($aprovados as $aprovado) {
+                foreach ($aprobados as $aprovado) {
                     echo "<tr><td>$aprovado[0]</td><td>$aprovado[1]</td><td>$aprovado[2]</td></tr>";
                 }
             }
@@ -98,11 +97,11 @@
             if (empty($en_espera)) {
                 echo "<p class='mb-0 has-text-white'>No hay eventos en espera</p>";
             } else { ?>
-            <table>
+            <table class='has-text-white'>
                 <tr>
-                    <th>Nombre</th>
-                    <th>Recinto</th>
-                    <th>Inicio</th>
+                    <th class='has-text-white'>Nombre</th>
+                    <th class='has-text-white'>Recinto</th>
+                    <th class='has-text-white'>Inicio</th>
                 </tr>
                 <?php
                 foreach ($en_espera as $esperado) {
@@ -124,15 +123,15 @@
                 echo "<p class='mb-0 has-text-white'>No hay eventos rechazados</p>";
             } else {
             ?>
-            <table>
+            <table class='has-text-white'>
                 <tr>
-                    <th>Nombre</th>
-                    <th>Recinto</th>
-                    <th>Inicio</th>
+                    <th class='has-text-white'>Nombre</th>
+                    <th class='has-text-white'>Recinto</th>
+                    <th class='has-text-white'>Inicio</th>
                 </tr>
                 <?php
                 foreach ($rechazados as $rechazado) {
-                    echo "<tr><td>$rechazado[0]</td><td>$rechazado[1]</td><td>$rechazado[2]</td></tr>";
+                    echo "<tr><td class='has-text-white'>$rechazado[0]</td><td class='has-text-white'>$rechazado[1]</td><td class='has-text-white'>$rechazado[2]</td></tr>";
                 }
             }
                 ?>
