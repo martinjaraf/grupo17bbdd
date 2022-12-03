@@ -37,7 +37,7 @@ include('templates/header.php');
 </style>
 
 <?php
-include("config/conexion.php");
+require("config/conexion.php");
 $query = "SELECT * FROM recintos;";
 $result = $db->prepare($query);
 $result->execute();
@@ -83,16 +83,16 @@ $artistas = $result->fetchAll();
                             ?>
                         </select>
                         <br>
-                        <label> Artistas a Invitar</label>
+                        <label>Artistas a Invitar</label>
                         <br>
                         <div class="custom-control custom-checkbox">
                             <?php
                             foreach ($artistas as $a) {
-                                echo "<label><input type='checkbox' value='$a[1]'> $a[1]</label><br>";
+                                echo "<label><input type='checkbox' name='artistas[]' value='$a[1]'> $a[1]</label><br>";
                             }
                             ?>
                         </div>
-                        
+                        <p align="center"><input type="submit" value="Crear /"></p>
                     </form>
                 </div>
             </div>
